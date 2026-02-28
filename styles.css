@@ -1326,3 +1326,29 @@ html, body{
     opacity: 1 !important;
   }
 }
+
+/* =========================
+   FINAL FIX: Drawer background not transparent (iOS Safari)
+   วางท้ายสุดของ styles.css
+   ========================= */
+.drawer{
+  z-index: 99999 !important;
+}
+
+.drawer-backdrop{
+  background: rgba(0,0,0,.78) !important; /* ทำให้ด้านหลังมืดทึบขึ้น */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.drawer-panel{
+  background: var(--panel) !important;     /* แผงเมนูทึบ */
+  opacity: 1 !important;
+  box-shadow: 0 22px 70px rgba(0,0,0,.45) !important;
+}
+
+/* กันบาง element (เช่น body::before/::after) ลอยทับทำให้ดูโปร่ง */
+.drawer,
+.drawer *{
+  isolation: isolate;
+}
