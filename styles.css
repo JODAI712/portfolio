@@ -359,7 +359,7 @@ body::after{
   .grid-3{grid-template-columns: 1fr}
   .menu{display:none}
   .page-head{ flex-direction:column; }
-  .page-title{ font-size: 28px; }
+  .page-title{ font-size: 50px; }
 }
 
 /* =========================
@@ -744,30 +744,8 @@ body.dark::before{
   margin-top: 12px;
 }
 
-/* Dark mode: ทำปุ่ม Preview ให้เด่นขึ้น */
-:root:not([data-theme="light"]) .cert-card .btn{
-  background: rgba(47,128,255,.14);
-  border-color: rgba(47,128,255,.35);
-  color: rgba(255,255,255,.92);
-}
 
-:root:not([data-theme="light"]) .cert-card .btn:hover{
-  background: rgba(47,128,255,.22);
-  border-color: rgba(47,128,255,.55);
-  transform: translateY(-1px);
-}
 
-/* ปุ่ม Open (ghost) ยังให้ดูเบากว่า Preview */
-:root:not([data-theme="light"]) .cert-card .btn.ghost{
-  background: transparent;
-  border-color: rgba(255,255,255,.18);
-  color: rgba(255,255,255,.75);
-}
-
-:root:not([data-theme="light"]) .cert-card .btn.ghost:hover{
-  border-color: rgba(47,128,255,.45);
-  color: rgba(255,255,255,.9);
-}
 
 /* =========================
    MODAL (Preview PDF)
@@ -1386,4 +1364,146 @@ html, body{
   opacity: 1 !important;
   z-index: 1 !important;
   box-shadow: 0 22px 70px rgba(0,0,0,.45) !important;
+}
+
+/* =========================
+   GLOBAL SPACING SYSTEM (FINAL)
+   วางท้ายสุดของ styles.css
+   ========================= */
+
+/* ระยะห่างแต่ละ section ให้เท่ากัน */
+.section{
+  padding: 24px 0 !important;
+}
+
+/* หัวข้อแต่ละ section */
+.section h2{
+  margin: 0 0 14px !important;
+  font-size: 26px;
+}
+
+/* ข้อความนำ/ย่อหน้า */
+.lead{ margin: 0 0 12px !important; }
+.sub{ margin: 0 !important; }
+
+/* ระยะห่างระหว่างการ์ดใน section เดียวกัน */
+.card + .card{
+  margin-top: 14px;
+}
+
+/* ระยะห่างในกริดต่าง ๆ */
+.grid-3,
+.cert-grid,
+.edu-grid,
+.video-grid{
+  gap: 16px !important;
+}
+
+/* กันกรณี Masonry (column-count) ทำให้การ์ดชิด/สลับ spacing */
+.grid-3{
+  column-gap: 16px !important;
+}
+.grid-3 > *{
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   MOBILE: ให้แน่นขึ้นนิดนึง แต่ยังหายใจได้
+   ========================= */
+@media (max-width: 900px){
+  .section{
+    padding: 18px 0 !important;
+  }
+  .section h2{
+    margin-bottom: 12px !important;
+  }
+  .card{
+    padding: 14px !important;
+    border-radius: 16px !important;
+  }
+  .card + .card{
+    margin-top: 12px;
+  }
+}
+
+/* =========================
+   DARK MODE: Preview Button Upgrade
+   ========================= */
+
+:root:not([data-theme="light"]) .cert-card .btn:not(.ghost){
+  background: linear-gradient(
+    180deg,
+    rgba(47,128,255,.35),
+    rgba(47,128,255,.18)
+  ) !important;
+
+  border: 1px solid rgba(47,128,255,.55) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 8px 24px rgba(47,128,255,.25),
+    0 0 0 1px rgba(47,128,255,.25) inset !important;
+}
+
+/* Hover effect */
+html:not([data-theme="light"]) .cert-card .btn:not(.ghost){
+  background: linear-gradient(
+    180deg,
+    rgba(47,128,255,.45),
+    rgba(47,128,255,.22)
+  ) !important;
+
+  border: 1px solid rgba(47,128,255,.65) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 12px 30px rgba(47,128,255,.35),
+    0 0 0 1px rgba(47,128,255,.35) inset !important;
+}
+
+html:not([data-theme="light"]) .cert-card .btn:not(.ghost):hover{
+  background: linear-gradient(
+    180deg,
+    rgba(47,128,255,.65),
+    rgba(47,128,255,.35)
+  ) !important;
+}
+
+/* =========================
+   FIX CERT BUTTONS (Dark mode)
+   วางท้ายสุด styles.css
+   ========================= */
+
+/* โหมดมืดเท่านั้น */
+html:not([data-theme="light"]) .cert-card .btn{
+  background: linear-gradient(180deg, rgba(47,128,255,.55), rgba(47,128,255,.22)) !important;
+  border-color: rgba(47,128,255,.75) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(47,128,255,.25) !important;
+}
+
+/* Hover */
+html:not([data-theme="light"]) .cert-card .btn:hover{
+  background: linear-gradient(180deg, rgba(47,128,255,.70), rgba(47,128,255,.30)) !important;
+  border-color: rgba(47,128,255,.95) !important;
+}
+
+/* ปุ่ม Open (ghost) ให้ดูเป็นรอง */
+html:not([data-theme="light"]) .cert-card .btn.ghost{
+  background: rgba(255,255,255,.04) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  color: rgba(255,255,255,.78) !important;
+  box-shadow: none !important;
+}
+
+html:not([data-theme="light"]) .cert-card .btn.ghost:hover{
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(47,128,255,.55) !important;
+  color: #fff !important;
+}
+
+/* =========================
+   FIX Preview Text (Dark mode)
+   ========================= */
+:root:not([data-theme="light"]) .edu-card .btn{
+  color: #ffffff !important;
 }
