@@ -1004,3 +1004,76 @@ body.dark::before{
   margin-top: 12px;
   font-size: 13px;
 }
+
+/* =========================
+   MOBILE IMPROVEMENT
+   ========================= */
+@media (max-width: 768px){
+
+  /* container padding */
+  .container{
+    padding: 0 16px;
+  }
+
+  /* hero */
+  .hero{
+    padding: 20px 0;
+  }
+
+  h1{
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .sub{
+    font-size: 14px;
+  }
+
+  /* profile card */
+  .profile-img{
+    width: 140px;
+    height: 140px;
+  }
+
+  /* buttons */
+  .actions{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn{
+    width: 100%;
+  }
+
+  /* skill panel */
+  .skill-panel{
+    margin-top: 20px;
+  }
+
+  /* grid layouts */
+  .grid-3,
+  .cert-grid,
+  .edu-grid,
+  .video-grid{
+    grid-template-columns: 1fr !important;
+    column-count: 1 !important;
+  }
+
+  /* contact */
+  .contact-row{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-row button{
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* modal */
+  .modal-panel{
+    width: 94vw;
+    height: 85vh;
+  }
+
+}

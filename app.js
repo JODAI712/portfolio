@@ -22,7 +22,7 @@ function setTheme(theme) {
 
 // โหลดธีมที่เคยเลือกไว้
 const saved = localStorage.getItem("theme");
-setTheme(saved ? saved : "dark");
+setTheme(saved ? saved : "light");
 
 // สลับธีม
 themeBtn.addEventListener("click", () => {
