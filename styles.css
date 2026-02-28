@@ -1352,3 +1352,38 @@ html, body{
 .drawer *{
   isolation: isolate;
 }
+
+/* =========================
+   FIX FINAL: Drawer backdrop must cover FULL screen
+   (Android/iOS Safari safe)
+   วางท้ายสุดของ styles.css
+   ========================= */
+
+/* ตัวครอบ */
+.drawer{
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+}
+
+/* แผ่นดำทับทั้งจอ */
+.drawer-backdrop{
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,.78) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* แผงเมนูด้านขวา */
+.drawer-panel{
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  height: 100vh !important;
+  width: min(340px, 88vw) !important;
+  background: var(--panel) !important;
+  opacity: 1 !important;
+  z-index: 1 !important;
+  box-shadow: 0 22px 70px rgba(0,0,0,.45) !important;
+}
