@@ -1239,3 +1239,90 @@ body.dark::before{
 
 /* กัน body เลื่อนตอน drawer เปิด */
 .no-scroll{ overflow:hidden; }
+
+/* =========================
+   MOBILE FIX PATCH (Header + Overflow)
+   วางท้ายสุดของ styles.css
+   ========================= */
+
+/* 1) กันหน้าเว็บล้นขวา (ช่วยแก้อาการเพี้ยน/มีสกอร์ลแนวนอน) */
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) แก้ปุ่มบน header ไม่ให้โดน .btn{width:100%} จาก mobile block เดิม */
+@media (max-width: 900px){
+  .nav-actions .btn{
+    width: auto !important;
+    padding: 10px 12px;
+  }
+}
+
+/* 3) ปุ่มใน hero ให้เต็มความกว้างแค่ “ใน actions” พอ (ไม่กระทบ header) */
+@media (max-width: 900px){
+  .actions .btn{
+    width: 100%;
+  }
+}
+
+/* 4) Terminal/pre กันบรรทัดยาวดันจอ */
+@media (max-width: 900px){
+  .terminal-body{
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================
+   FIX: HAMBURGER LOOKS TRANSPARENT
+   ========================= */
+@media (max-width: 900px){
+  .nav-btn{
+    background: var(--panel) !important;
+    border-color: var(--border) !important;
+    box-shadow: 0 10px 26px rgba(0,0,0,.10) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  /* ให้ปุ่มธีม + ปุ่มเมนู “ชัด” เหมือนกัน */
+  .nav-actions .btn{
+    background: var(--panel);
+    border-color: var(--border);
+  }
+}
+
+/* =========================
+   FIX: CARDS TOO CLOSE (Projects / About)
+   ========================= */
+@media (max-width: 900px){
+  /* เดิมเป็น column-count เลย spacing แปลก + ไม่มีช่องว่างของ .card */
+  .grid-3{
+    column-count: unset !important;
+    column-gap: unset !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* ทำให้ทุกการ์ดใน grid-3 มีช่องหายใจ */
+  .grid-3 .card{
+    margin: 0 !important;
+  }
+
+  .project-link .card{
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px){
+  .drawer-backdrop{
+    background: rgba(0,0,0,.68) !important;
+  }
+  .drawer-panel{
+    background: var(--panel) !important;
+    opacity: 1 !important;
+  }
+}
