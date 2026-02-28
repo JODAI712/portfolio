@@ -72,3 +72,40 @@ if (skillPanel) {
 
   obs.observe(skillPanel);
 }
+
+// ===== Mobile Drawer =====
+const navBtn = document.getElementById("navBtn");
+const drawer = document.getElementById("drawer");
+
+function openDrawer(){
+  if(!drawer) return;
+  drawer.classList.add("show");
+  drawer.setAttribute("aria-hidden","false");
+  navBtn?.setAttribute("aria-expanded","true");
+  document.body.classList.add("no-scroll");
+}
+
+function closeDrawer(){
+  if(!drawer) return;
+  drawer.classList.remove("show");
+  drawer.setAttribute("aria-hidden","true");
+  navBtn?.setAttribute("aria-expanded","false");
+  document.body.classList.remove("no-scroll");
+}
+
+navBtn?.addEventListener("click", () => {
+  if(drawer?.classList.contains("show")) closeDrawer();
+  else openDrawer();
+});
+
+document.addEventListener("click", (e) => {
+  // ปิดเมื่อกด backdrop หรือปุ่มปิด
+  if(e.target.closest('[data-drawer-close="1"]')) closeDrawer();
+
+  // กดลิงก์แล้วปิดอัตโนมัติ
+  if(e.target.closest('[data-drawer-link="1"]')) closeDrawer();
+});
+
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape" && drawer?.classList.contains("show")) closeDrawer();
+});

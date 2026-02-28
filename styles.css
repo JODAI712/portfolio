@@ -1077,3 +1077,165 @@ body.dark::before{
   }
 
 }
+
+/* =========================
+   MOBILE UI V2 (Hamburger + Drawer)
+   ========================= */
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Hamburger: ซ่อนไว้บน Desktop */
+.nav-btn{
+  display:none;
+  width:44px;
+  height:44px;
+  font-size:18px;
+  line-height:1;
+}
+
+/* Drawer base */
+.drawer{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:9998;
+}
+.drawer.show{ display:block; }
+
+.drawer-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+}
+
+.drawer-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(340px, 88vw);
+  background: var(--panel);
+  border-left:1px solid var(--border);
+  box-shadow: 0 22px 70px rgba(0,0,0,.35);
+  display:flex;
+  flex-direction:column;
+  transform: translateX(12px);
+  opacity: 0;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.drawer.show .drawer-panel{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 14px;
+  border-bottom:1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+.drawer-title{
+  font-weight:850;
+  letter-spacing:.2px;
+}
+.drawer-close{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor:pointer;
+}
+
+.drawer-links{
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+  gap:6px;
+}
+.drawer-links a{
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid transparent;
+  color: var(--text);
+}
+.drawer-links a:hover{
+  background: rgba(255,255,255,.04);
+  border-color: var(--border);
+}
+
+.drawer-foot{
+  margin-top:auto;
+  padding:12px;
+  border-top:1px solid var(--border);
+  display:flex;
+  gap:10px;
+}
+.drawer-foot .btn{ flex:1; }
+
+/* ===== Mobile layout polish ===== */
+@media (max-width: 900px){
+
+  /* แสดง hamburger, ซ่อนเมนู desktop */
+  .menu{ display:none; }
+  .nav-btn{ display:inline-flex; justify-content:center; align-items:center; }
+
+  /* container padding */
+  .container{ padding: 0 16px; }
+
+  /* header height ให้กดง่าย */
+  .nav{ height: 60px; }
+
+  /* hero spacing */
+  .hero{ padding: 18px 0; }
+  .hero-grid{ grid-template-columns: 1fr; gap: 16px; }
+
+  /* profile card ให้อยู่บนและดูเด่น */
+  .profile-card{ padding: 16px; border-radius: 18px; }
+  .profile-img{ width: 132px; height: 132px; margin-bottom: 12px; }
+
+  /* typography */
+  h1{ font-size: 30px; line-height: 1.22; }
+  .sub{ font-size: 14px; }
+
+  /* actions -> full width */
+  .actions{ flex-direction: column; gap: 10px; }
+  .actions .btn{ width: 100%; }
+
+  /* cards spacing */
+  .section{ padding: 22px 0; }
+  .card{ border-radius: 16px; padding: 14px; }
+
+  /* grids -> 1 column (กันซ้อนแปลก) */
+  .grid-3{ column-count: 1; }
+  .cert-grid, .edu-grid, .video-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  /* contact row -> stack */
+  .contact-row{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-row button{
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* modal ใช้งานง่ายขึ้น */
+  .modal-panel{
+    width: 94vw;
+    height: 86vh;
+  }
+}
+
+/* กัน body เลื่อนตอน drawer เปิด */
+.no-scroll{ overflow:hidden; }
