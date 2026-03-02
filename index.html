@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="th">
+<html data-theme="light" lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -512,47 +512,7 @@ $ focus
   </div>
 
   
-  <script>
-    (function(){
-      const modal = document.getElementById('certModal');
-      const frame = document.getElementById('certFrame');
-      const titleEl = document.getElementById('certModalTitle');
-      const openNew = document.getElementById('certOpenNew');
-
-      function openModal(src, title){
-        titleEl.textContent = title || 'Certificate';
-        frame.src = src;
-        openNew.href = src;
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden','false');
-        document.body.classList.add('no-scroll');
-      }
-      function closeModal(){
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden','true');
-        frame.src = '';
-        document.body.classList.remove('no-scroll');
-      }
-
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-cert]');
-        if(btn){
-          const src = btn.getAttribute('data-cert');
-          const title = btn.getAttribute('data-cert-title');
-          openModal(src, title);
-          return;
-        }
-        if(e.target.closest('[data-close="1"]')){
-          closeModal();
-          return;
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
-      });
-    })();
-  </script>
+  
 
   <script src="app.js"></script>
 </body>

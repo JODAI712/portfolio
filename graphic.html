@@ -9,15 +9,52 @@
 <body>
   <header class="header">
     <div class="container nav">
-      <a class="logo" href="index.html">PORTFOLIO.CHANANYU<span class="dot"></span></a>
-      <nav class="menu">
-        <a href="index.html#about">About</a>
-        <a href="index.html#skills">Skills</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <button id="themeBtn" class="btn ghost" aria-label="Toggle theme">🌙</button>
+  <a class="logo" href="index.html#top">PORTFOLIO.CHANANYU<span class="dot"></span></a>
+
+  <nav class="menu">
+    <a href="index.html#about">About</a>
+    <a href="index.html#education">Education</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#certificates">Certificates</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button id="themeBtn" class="btn ghost" aria-label="Toggle theme">🌙</button>
+
+    <!-- ✅ Mobile Hamburger -->
+    <button id="navBtn" class="btn ghost nav-btn" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+  </div>
+</div>
+
+<!-- ✅ Mobile Drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-drawer-close="1"></div>
+
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <div class="drawer-title">Menu</div>
+      <button class="drawer-close" type="button" data-drawer-close="1" aria-label="Close">✕</button>
     </div>
+
+    <nav class="drawer-links">
+      <a href="index.html#about" data-drawer-link="1">About</a>
+      <a href="index.html#education" data-drawer-link="1">Education</a>
+      <a href="index.html#skills" data-drawer-link="1">Skills</a>
+      <a href="index.html#certificates" data-drawer-link="1">Certificates</a>
+      <a href="index.html#projects" data-drawer-link="1">Projects</a>
+      <a href="index.html#contact" data-drawer-link="1">Contact</a>
+    </nav>
+
+    <div class="drawer-foot">
+      <a class="btn" href="index.html#projects" data-drawer-link="1">ดูผลงาน</a>
+      <a class="btn ghost" href="index.html#contact" data-drawer-link="1">ติดต่อ</a>
+    </div>
+  </div>
+</div>
   </header>
 
   <main>
@@ -32,7 +69,7 @@
           <a class="btn ghost" href="index.html#projects">← กลับหน้า Projects</a>
         </div>
 
-        <div class="grid-3">
+        <div class="masonry-3">
 
   <div class="card project-card">
     <img src="https://res.cloudinary.com/ddzvjklys/image/upload/f_auto,q_auto/v1772262323/SuperShap1_rkbxkb.png" alt="">
